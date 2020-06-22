@@ -1,0 +1,71 @@
+.container{
+  background-image: url("https://images.hdqwalls.com/wallpapers/league-of-legends-fan-art-4k-zs.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+
+.main__header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1{
+    font-size: 4em;
+    margin-bottom: 20px;
+  }
+  h2{
+    font-size: 3em;
+    text-align: center;
+  }
+  .headerWrapper{
+    margin-top: 20px;
+    padding: 20px;
+    text-shadow: 6px 6px 10px rgba(122, 188, 255, 1);
+    color: #ffffff;
+    border: 0 solid transparent;
+    height: 130px;
+    border-radius: 20px;
+    background: rgb(17,210,226);
+    background: linear-gradient(90deg, rgba(17,210,226,1) 34%, rgba(38,125,173,0.6755077030812324) 57%);
+
+  }
+
+}
+
+.main__body{
+  .formWrapper__form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18%;
+    flex-direction: column;
+    .formWrapper__name{
+
+    }
+    .formWrapper__select{
+
+    }
+    .formWrapper__btn-submit{
+
+    }
+    .row{
+      width: 400px;
+      .formWrapper__btn-submit{
+        width: 100%;
+      }
+      .formWrapper__name{
+        width: 80%;
+      }
+      .formWrapper__select{
+        width: 18%;
+      }
+
+    }
+  }
+
+}

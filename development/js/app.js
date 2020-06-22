@@ -1,3 +1,9 @@
 import "../scss/style.scss"
+import React, {Component} from "react";
+import ReactDOM from "react-dom";
+import {MainPage} from "./mainPage";
 
-console.log('lslasssasaaslsalas');
+const App = () => <MainPage/>
+
+
+ReactDOM.render(<App/>, document.getElementById("app"));
