@@ -1,5 +1,5 @@
 .container{
-  background-image: url("https://images.hdqwalls.com/wallpapers/league-of-legends-fan-art-4k-zs.jpg");
+  background-image: url("https://www.pixel4k.com/wp-content/uploads/2019/10/program-camille-skin-league-of-legends_1572369553.jpg");
   height: 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -37,35 +37,73 @@
 
 }
 
-.main__body{
-  .formWrapper__form{
+.main__body {
+  .formWrapper__form {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 18%;
     flex-direction: column;
-    .formWrapper__name{
+
+    .formWrapper__name {
+      background: rgb(17, 210, 226);
+      background: linear-gradient(90deg, rgba(17, 210, 226, 1) 34%, rgba(38, 125, 173, 0.6755077030812324) 57%);
+      color: white;
+      border: none;
+      text-shadow: 6px 6px 10px rgba(122, 188, 255, 1);
 
     }
-    .formWrapper__select{
+
+    .formWrapper__select {
+      background: rgb(17, 210, 226);
+      background: linear-gradient(90deg, rgba(17, 210, 226, 1) 34%, rgba(38, 125, 173, 0.6755077030812324) 57%);
+      color: white;
+      border: none;
+      text-shadow: 6px 6px 10px rgba(122, 188, 255, 1);
+
+      option {
+        background: rgb(17, 210, 226);
+        text-shadow: 6px 6px 10px rgba(122, 188, 255, 1);
+
+      }
 
     }
-    .formWrapper__btn-submit{
+
+    .formWrapper__btn-submit {
+      background: rgb(17, 210, 226);
+      background: linear-gradient(90deg, rgba(17, 210, 226, 1) 34%, rgba(38, 125, 173, 0.6755077030812324) 57%);
+      color: white;
+      border: none;
+      text-shadow: 6px 6px 10px rgba(122, 188, 255, 1);
 
     }
-    .row{
+
+    .row {
       width: 400px;
-      .formWrapper__btn-submit{
+      padding: 5px;
+
+      .formWrapper__btn-submit {
         width: 100%;
       }
-      .formWrapper__name{
+
+      .formWrapper__name {
         width: 80%;
       }
-      .formWrapper__select{
-        width: 18%;
+
+      .formWrapper__select {
+        width: 19%;
       }
 
     }
   }
 
+  ::placeholder {
+    color: white;
+    text-shadow: 6px 6px 10px rgba(122, 188, 255, 1);
+  }
+
+  .formWrapper__btn-submit:hover {
+    
+
+  }
 }
