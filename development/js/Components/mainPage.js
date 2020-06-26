@@ -1,5 +1,6 @@
 import React, {Component, useEffect, useState} from "react";
 import ReactDOM from "react-dom";
+import {RegionSelector} from "./RegionSelector";
 
 
 export const MainPage = () => {
@@ -7,20 +8,25 @@ export const MainPage = () => {
     const [puuid, setPuuid] = useState("")
     const [accId, setAccId] = useState("")
     const [summonerLvl, setSummonerLvl] = useState(0)
-    const [id, setId] = useState("")
+    const [id, setId] = useState(null)
     const [totalMaestry, setTotalMaestry] = useState(0)
-    const [flexStats,setFlexStats] = useState({
+    const [region, setRegion] = useState("eun1.api.riotgames.com")
+    const [flexStats, setFlexStats] = useState({
         tier: "",
         rank: "",
         leaguePoints: 0,
-        hotStreak: false
+        hotStreak: false,
+        wins: 0,
+        losses: 0
 
     })
-    const [soloQstats,setSoloQstats] = useState({
+    const [soloQstats, setSoloQstats] = useState({
         tier: "",
         rank: "",
         leaguePoints: 0,
-        hotStreak: false
+        hotStreak: false,
+        wins: 0,
+        losses: 0
     })
 
 
@@ -28,9 +34,9 @@ export const MainPage = () => {
         setName(e.target.value)
     }
 
-    useEffect(() =>{
+    useEffect(() => {
 
-    },[totalMaestry])
+    }, [totalMaestry])
 
     const getStats = (url) => {
         fetch(url, {
@@ -57,11 +63,16 @@ export const MainPage = () => {
 
     const handleGetSummoner = (e) => {
         e.preventDefault()
-        getStats(`http://localhost:8080/https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}`)
-        getMaestry(`http://localhost:8080/https://eun1.api.riotgames.com/lol/champion-mastery/v4/scores/by-summoner/${id}`)
-        getRankedStats(`http://localhost:8080/https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`)
+        getStats(`http://localhost:8080/https://${region}/lol/summoner/v4/summoners/by-name/${name}`)
+
 
     }
+    useEffect(() => {
+        if (id !== null) {
+            getMaestry(`http://localhost:8080/https://${region}/lol/champion-mastery/v4/scores/by-summoner/${id}`)
+            getRankedStats(`http://localhost:8080/https://${region}/lol/league/v4/entries/by-summoner/${id}`)
+        }
+    }, [id])
 
     const getMaestry = (url) => {
         fetch(url, {
@@ -83,7 +94,7 @@ export const MainPage = () => {
             .catch(err => console.log(err))
     }
 
-    const getRankedStats = (url) =>{
+    const getRankedStats = (url) => {
         fetch(url, {
             method: "GET",
             // mode: "no-cors",
@@ -93,16 +104,34 @@ export const MainPage = () => {
 
         })
             .then(resp => {
-                console.log(resp);
                 return resp.json()
             })
             .then(data => {
-                setFlexStats(data[0])
-                setSoloQstats(data[1])
+                const newFlexStats = {
+                    tier: data[0].tier,
+                    rank: data[0].rank,
+                    leaguePoint: data[0].leaguePoints,
+                    wins: data[0].wins,
+                    losses: data[0].losses
+
+                }
+                setFlexStats(newFlexStats)
+                const newRankedStats ={
+                    tier: data[1].tier,
+                    rank: data[1].rank,
+                    leaguePoint: data[1].leaguePoints,
+                    wins: data[1].wins,
+                    losses: data[1].losses
+
+                }
+                setSoloQstats(newRankedStats)
             })
             .catch(err => console.log(err))
     }
 
+    const handleChangeRegion = (newRegion) => {
+        setRegion(newRegion)
+    }
 
 
     return (
@@ -118,11 +147,8 @@ export const MainPage = () => {
                     <div className={"formWrapper__1st-row row"}>
                         <input className={"formWrapper__name"} type={"text"} placeholder={"Imie Przywolywacza"}
                                onChange={handleSetName}/>
-                        <select className={"formWrapper__select"}>
-                            <option className={"formWrapper__select-option"}>Eune</option>
-                            <option className={"formWrapper__select-option"}>Euw</option>
-                            <option className={"formWrapper__select-option"}>Kor</option>
-                        </select>
+                        <RegionSelector eventChange={handleChangeRegion}/>
+
                     </div>
                     <div className={"formWrapper__2nd-row row"}>
                         <button className={"formWrapper__btn-submit"} onClick={handleGetSummoner} type={"submit"}>Szukaj
