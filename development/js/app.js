@@ -1,7 +1,7 @@
 import "../scss/style.scss"
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
-import {MainPage} from "./mainPage";
+import {MainPage} from "./Components/mainPage";
 
 const App = () => <MainPage/>
 
