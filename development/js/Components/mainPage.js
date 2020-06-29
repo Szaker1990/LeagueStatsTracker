@@ -71,7 +71,9 @@ export const MainPage = () => {
                 setIsAvalible(true)
                 console.log(data)
             })
-            .catch(err => console.log(err))
+            .catch(err =>{console.log(err)
+            setIsAvalible(false)
+            })
     }
 
     const handleGetSummoner = (e) => {
@@ -145,6 +147,8 @@ export const MainPage = () => {
     const handleChangeRegion = (newRegion) => {
         setRegion(newRegion)
     }
+
+    if (isAvalible === false) return <ServerError/>
 
     if(id !== null) return <PlayerCard summonerName={name} summonerLevel={summonerLvl} maestry={totalMaestry}
     soloTier={soloQstats.tier} soloWins={soloQstats.wins} soloLoss={soloQstats.losses} soloPoints={soloQstats.leaguePoints}
