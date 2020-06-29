@@ -3,12 +3,16 @@ import ReactDOM from "react-dom";
 import {RegionSelector} from "./RegionSelector"
 import {keyApi}  from "../Components/currAPIkey"
 import {ServerError} from "./ServerError";
+import {PlayerCard} from "./PlayerCard";
 
 
 export const MainPage = () => {
     const [name, setName] = useState("")
     const [puuid, setPuuid] = useState("")
     const [accId, setAccId] = useState("")
+    const [isAvalible,setIsAvalible] = useState(null)
+    const [winRateSolo,setWinRateSolo] = useState(0)
+    const [winRateFlex,setWinRateFlex] = useState(0)
     const [summonerLvl, setSummonerLvl] = useState(0)
     const [id, setId] = useState(null)
     const [totalMaestry, setTotalMaestry] = useState(0)
@@ -40,6 +44,12 @@ export const MainPage = () => {
 
     }, [totalMaestry])
 
+    useEffect(() =>{
+        setWinRateFlex(Math.floor(flexStats.wins / (flexStats.wins + flexStats.losses) * 100) + "%")
+        setWinRateSolo(Math.floor(soloQstats.wins / (soloQstats.wins + soloQstats.losses) * 100) + "%")
+
+    },[soloQstats, flexStats])
+
     const getStats = (url) => {
         fetch(url, {
             method: "GET",
@@ -58,6 +68,7 @@ export const MainPage = () => {
                 setSummonerLvl(data.summonerLevel);
                 setAccId(data.accountId);
                 setId(data.id)
+                setIsAvalible(true)
                 console.log(data)
             })
             .catch(err => console.log(err))
@@ -109,20 +120,21 @@ export const MainPage = () => {
             })
             .then(data => {
                 const newFlexStats = {
-                    tier: data[0].tier,
-                    rank: data[0].rank,
-                    leaguePoint: data[0].leaguePoints,
-                    wins: data[0].wins,
-                    losses: data[0].losses
+                    tier: data[1].tier,
+                    rank: data[1].rank,
+                    leaguePoints: data[1].leaguePoints,
+                    wins: data[1].wins,
+                    losses: data[1].losses,
 
                 }
                 setFlexStats(newFlexStats)
+
                 const newRankedStats ={
-                    tier: data[1].tier,
-                    rank: data[1].rank,
-                    leaguePoint: data[1].leaguePoints,
-                    wins: data[1].wins,
-                    losses: data[1].losses
+                    tier: data[0].tier,
+                    rank: data[0].rank,
+                    leaguePoints: data[0].leaguePoints,
+                    wins: data[0].wins,
+                    losses: data[0].losses
 
                 }
                 setSoloQstats(newRankedStats)
@@ -134,6 +146,10 @@ export const MainPage = () => {
         setRegion(newRegion)
     }
 
+    if(id !== null) return <PlayerCard summonerName={name} summonerLevel={summonerLvl} maestry={totalMaestry}
+    soloTier={soloQstats.tier} soloWins={soloQstats.wins} soloLoss={soloQstats.losses} soloPoints={soloQstats.leaguePoints}
+    soloRank={soloQstats.rank} soloWinRate={winRateSolo} flexTier={flexStats.tier} flexWins={flexStats.wins}
+    flexLoss={flexStats.losses} flexPoints={flexStats.leaguePoints} flexRank={flexStats.rank} flexWinRate={winRateFlex}/>
 
 
     return (
@@ -141,19 +157,19 @@ export const MainPage = () => {
             <div className={"main__header"}>
                 <div className={"headerWrapper"}>
                     <h1>League Stats Tracker v.0.1</h1>
-                    <h2>Witaj Przywolywaczu</h2>
+                    <h2>Welcome Summoner</h2>
                 </div>
             </div>
             <div className={"main__body"}>
                 <form className={"formWrapper__form"}>
                     <div className={"formWrapper__1st-row row"}>
-                        <input className={"formWrapper__name"} type={"text"} placeholder={"Imie Przywolywacza"}
+                        <input className={"formWrapper__name"} type={"text"} placeholder={"Summoner name"}
                                onChange={handleSetName}/>
                         <RegionSelector eventChange={handleChangeRegion}/>
 
                     </div>
                     <div className={"formWrapper__2nd-row row"}>
-                        <button className={"formWrapper__btn-submit"} onClick={handleGetSummoner} type={"submit"}>Szukaj
+                        <button className={"formWrapper__btn-submit"} onClick={handleGetSummoner} type={"submit"}>Search
                         </button>
                     </div>
                 </form>
