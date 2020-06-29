@@ -1,6 +1,8 @@
 import React, {Component, useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-import {RegionSelector} from "./RegionSelector";
+import {RegionSelector} from "./RegionSelector"
+import {keyApi}  from "../Components/currAPIkey"
+import {ServerError} from "./ServerError";
 
 
 export const MainPage = () => {
@@ -43,7 +45,7 @@ export const MainPage = () => {
             method: "GET",
             // mode: "no-cors",
             headers: {
-                "X-Riot-Token": "RGAPI-c8bf86ea-2073-4d6d-aa57-c3694114b679"
+                "X-Riot-Token": `${keyApi}`
             }
 
         })
@@ -79,7 +81,7 @@ export const MainPage = () => {
             method: "GET",
             // mode: "no-cors",
             headers: {
-                "X-Riot-Token": "RGAPI-c8bf86ea-2073-4d6d-aa57-c3694114b679"
+                "X-Riot-Token": `${keyApi}`
             }
 
         })
@@ -89,7 +91,6 @@ export const MainPage = () => {
             })
             .then(data => {
                 setTotalMaestry(data)
-                console.log(data)
             })
             .catch(err => console.log(err))
     }
@@ -99,7 +100,7 @@ export const MainPage = () => {
             method: "GET",
             // mode: "no-cors",
             headers: {
-                "X-Riot-Token": "RGAPI-c8bf86ea-2073-4d6d-aa57-c3694114b679"
+                "X-Riot-Token": `${keyApi}`
             }
 
         })
@@ -132,6 +133,7 @@ export const MainPage = () => {
     const handleChangeRegion = (newRegion) => {
         setRegion(newRegion)
     }
+
 
 
     return (

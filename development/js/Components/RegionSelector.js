@@ -6,17 +6,14 @@ export const RegionSelector = ({eventChange}) => {
         {key: 'BR1', value: "br1.api.riotgames.com"},
         {key: 'EUN1', value: "eun1.api.riotgames.com"},
         {key: 'EUW1', value: "euw1.api.riotgames.com"},
-        // EUN1: "eun1.api.riotgames.com",
-        // EUW1: "euw1.api.riotgames.com",
-        // JP1: "jp1.api.riotgames.com",
-        // KR: "kr.api.riotgames.com",
-        // LA1: "la1.api.riotgames.com",
-        // LA2: "la2.api.riotgames.com",
-        // NA1: "na1.api.riotgames.com",
-        // OC1: "oc1.api.riotgames.com",
-        // TR1: "tr1.api.riotgames.com",
-        // RU: "ru.api.riotgames.com"
-
+        {key: "JP1", value:"jp1.api.riotgames.com" },
+        {key: "KR" , value: "kr.api.riotgames.com"},
+        {key: "LA1", value: "la1.api.riotgames.com"},
+        {key: "LA2", value: "la2.api.riotgames.com"},
+        {key: "NA1", value: "na1.api.riotgames.com"},
+        {key: "OC1", value: "oc1.api.riotgames.com"},
+        {key: "TR1", value: "tr1.api.riotgames.com"},
+        {key: "RU", value: "ru.api.riotgames.com" }
     ]
 
     useEffect(()=>{
