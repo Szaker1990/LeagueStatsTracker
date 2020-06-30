@@ -4,8 +4,9 @@ import {RegionSelector} from "./RegionSelector"
 import {keyApi}  from "../Components/currAPIkey"
 import {ServerError} from "./ServerError";
 import {PlayerCard} from "./PlayerCard";
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {WavyFoot} from "./wavyFoot";
+
 
 
 export const MainPage = () => {
@@ -19,6 +20,7 @@ export const MainPage = () => {
     const [id, setId] = useState(null)
     const [totalMaestry, setTotalMaestry] = useState(0)
     const [region, setRegion] = useState("eun1.api.riotgames.com")
+    const history = useHistory();
     const [flexStats, setFlexStats] = useState({
         tier: "",
         rank: "",
@@ -154,7 +156,9 @@ export const MainPage = () => {
         setRegion(newRegion)
     }
 
-    if (isAvalible === false) return <ServerError/>
+    if (isAvalible === false){
+        history.push("/error");
+        }
 
     if(id !== null) return <PlayerCard summonerName={name} summonerLevel={summonerLvl} maestry={totalMaestry}
     soloTier={soloQstats.tier} soloWins={soloQstats.wins} soloLoss={soloQstats.losses} soloPoints={soloQstats.leaguePoints}
