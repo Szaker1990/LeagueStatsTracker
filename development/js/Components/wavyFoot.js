@@ -5,7 +5,7 @@ export const WavyFoot = () => {
 
     return (
         <>
-            <section className={}></section>
+
         </>
 
     )

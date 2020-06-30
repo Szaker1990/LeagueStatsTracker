@@ -4,6 +4,7 @@ import {RegionSelector} from "./RegionSelector"
 import {keyApi}  from "../Components/currAPIkey"
 import {ServerError} from "./ServerError";
 import {PlayerCard} from "./PlayerCard";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 
 export const MainPage = () => {
@@ -105,7 +106,9 @@ export const MainPage = () => {
             .then(data => {
                 setTotalMaestry(data)
             })
-            .catch(err => console.log(err))
+            .catch(err =>{console.log(err)
+                setIsAvalible(false)
+            })
     }
 
     const getRankedStats = (url) => {
@@ -141,7 +144,9 @@ export const MainPage = () => {
                 }
                 setSoloQstats(newRankedStats)
             })
-            .catch(err => console.log(err))
+            .catch(err =>{console.log(err)
+                setIsAvalible(false)
+            })
     }
 
     const handleChangeRegion = (newRegion) => {
