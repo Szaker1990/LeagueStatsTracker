@@ -4,7 +4,7 @@ import {RegionSelector} from "./RegionSelector"
 import {keyApi}  from "../Components/currAPIkey"
 import {ServerError} from "./ServerError";
 import {PlayerCard} from "./PlayerCard";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 
 export const MainPage = () => {
@@ -178,7 +178,7 @@ export const MainPage = () => {
 
                     </div>
                     <div className={"formWrapper__2nd-row row"}>
-                        <button className={"formWrapper__btn-submit"} onClick={handleGetSummoner} type={"submit"}>Search
+                       <button className={"formWrapper__btn-submit"} onClick={handleGetSummoner} type={"submit"}>Search
                         </button>
                     </div>
                 </form>
