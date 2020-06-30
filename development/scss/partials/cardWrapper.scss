@@ -71,3 +71,78 @@
   flex-direction: column;
 
 }
+
+@media(max-width: 1000px){
+  .cardWrapper{
+    .summonerStats{
+      width: 700px;
+    }
+    .flexStats{
+      width: 700px;
+    }
+    .soloStats{
+      width: 700px;
+    }
+  }
+}
+
+
+@media(max-width: 750px){
+  .cardWrapper{
+    .summonerStats{
+      width: 500px;
+      h2{
+        font-size: 1.5em;
+      }
+    }
+    .flexStats{
+      width: 500px;
+    }
+    .soloStats{
+      width: 500px;
+    }
+  }
+}
+
+@media(max-width: 570px){
+  .cardWrapper{
+    .summonerStats{
+      h1{
+        font-size: 1.5em;
+      }
+      h2{
+        font-size: 1em;
+      }
+    }
+    .flexStats{
+      h2{
+        font-size: 1.5em;
+      }
+      p{
+        font-size: 1em;
+      }
+    }
+    .soloStats{
+      h2{
+        font-size: 1.5em;
+      }
+      p{
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+@media(max-width: 500px){
+  .cardWrapper{
+    .summonerStats{
+      width: auto;
+    }
+    .flexStats{
+      width: auto;
+    }
+    .soloStats{
+      width: auto;
+    }
+  }
+}

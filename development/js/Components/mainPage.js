@@ -160,8 +160,8 @@ export const MainPage = () => {
         <>
             <div className={"main__header"}>
                 <div className={"headerWrapper"}>
-                    <h1>League Stats Tracker v.0.1</h1>
-                    <h2>Welcome Summoner</h2>
+                    <h1 className={"headerWrapper__title"}>League Stats Tracker v.0.1</h1>
+                    <h2 className={"headerWrapper__greeting"}>Welcome Summoner</h2>
                 </div>
             </div>
             <div className={"main__body"}>
