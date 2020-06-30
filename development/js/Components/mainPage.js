@@ -5,6 +5,7 @@ import {keyApi}  from "../Components/currAPIkey"
 import {ServerError} from "./ServerError";
 import {PlayerCard} from "./PlayerCard";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {WavyFoot} from "./wavyFoot";
 
 
 export const MainPage = () => {
@@ -183,6 +184,7 @@ export const MainPage = () => {
                     </div>
                 </form>
             </div>
+            <WavyFoot/>
         </>
     )
 }

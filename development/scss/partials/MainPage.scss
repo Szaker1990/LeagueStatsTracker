@@ -1,9 +1,10 @@
 .container{
   background-image: url("https://www.pixel4k.com/wp-content/uploads/2019/10/program-camille-skin-league-of-legends_1572369553.jpg");
-  height: 100vh;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  position: relative;
 }
 
 
